@@ -17,9 +17,9 @@ This repository contains a simple, event-based simulator designed to automate lo
 # Usage
 Compile the program and pass the number of events as an argument.
 
-'''c
+```bash
 ./program <number_of_events>
-'''
+```
 
 ### author note
 This README was mostly redacted by an LLM. The code is entirely human-made.
