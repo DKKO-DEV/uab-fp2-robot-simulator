@@ -12,7 +12,7 @@ arrays for managing data structures and their initial values
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-
+ 
 enum EventType { robotPackage=0, package=1, shopping=2 };
 
 //-----------------------------------------------------------------------Sorting packages: RobotPackages struct
