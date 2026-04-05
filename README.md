@@ -10,13 +10,14 @@ This repository contains a simple, event-based simulator designed to automate lo
 * **Shopping Automation**: Manages a queue of robots that wait for their turn to process a shopping list, with time passing relative to consumed simulation events.
 
 # Technical Details
-* Language: C
-* Memory: Dynamic memory management using malloc and free to prevent memory leaks.
-* Data Structures: Custom implementation of linked lists, stacks, and queues.
+* **Language**: C
+* **Memory**: Dynamic memory management using malloc and free to prevent memory leaks.
+* **Data Structures**: Custom implementation of linked lists, stacks, and queues.
 
 # Usage
 Compile the program and pass the number of events as an argument.
-'''
+
+'''c
 ./program <number_of_events>
 '''
 
