@@ -1,5 +1,9 @@
 #This is GitHub's automated template for C language.
 
+# Project
+test.c
+test2.c
+
 # Prerequisites
 *.d
 
