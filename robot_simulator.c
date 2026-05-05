@@ -44,14 +44,14 @@ int main (int argc, char ** argv)
 	int EventNumbers;
 	printf ("Starting... \n");
 	CheckArguments(argc, argv);
-	
-	// initialize EventNumbers 
+
+	// initialize EventNumbers
 
 	SimulationLoop(EventNumbers);
 	return 0;
 }
 
-// This is the main loop of the program. 
+// This is the main loop of the program.
 // It generates and consumes events.
 void SimulationLoop(int EventNumbers)
 {
@@ -59,18 +59,18 @@ void SimulationLoop(int EventNumbers)
 	enum EventType event;
 
 	InitStacks();
-	
-	for (int i=0; i<EventNumbers; i++)    
+
+	for (int i=0; i<EventNumbers; i++)
 	{
 		event = GenerateEventType();
 
 		switch(event) {
 			case 0:
-				struct RobotPackage* r_package = GenerateRobotPackage(); 
+				struct RobotPackage* r_package = GenerateRobotPackage();
 				SimulateManagingRobotPackages(r_package);
 				break;
 			case 1:
-				struct Package* package = GeneratePackage();
+				struct RobotPackage* package = GenerateRobotPackage();
 				SimulateManagingRobotPackages(package);
 				break;
 			case 2:
@@ -79,12 +79,12 @@ void SimulationLoop(int EventNumbers)
 				break;
 		}
 		// depending on the generated event type:
-		// event type 0: 
+		// event type 0:
 			// Simulate managing RobotPackages (sorting)
 		// event type 1:
 			// Simulate classifying Packages (putting to a corresponding stack)
 		// event type 2:
-			// Simulate go for shopping 
+			// Simulate go for shopping
 		// UpdateShopping
 	}
 	// CLEANING THE SIMULATION
@@ -122,7 +122,7 @@ struct RobotPackage * GenerateRobotPackage()
 // function to print a list of RobotPackages
 void PrintRobotPackages()
 {
-	
+
 }
 
 // function to search for a RobotPackage
@@ -157,7 +157,7 @@ struct Package * GeneratePackage()
 	return Package;
 }
 
-// function to initialize all stacks of Packages 
+// function to initialize all stacks of Packages
 void InitStacks()
 {
 
@@ -217,7 +217,7 @@ void AddToQueue(struct Shopping * shopping)
 // it may return the number of things to buy to simulate the time
 int Dequeue ()
 {
-	
+
 }
 
 // function to simulate the time the robot is in the queue

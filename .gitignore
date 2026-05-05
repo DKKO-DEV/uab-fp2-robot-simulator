@@ -3,6 +3,7 @@
 # Project
 test.c
 test2.c
+*.pdf
 
 # Prerequisites
 *.d
