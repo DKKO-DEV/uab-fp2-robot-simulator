@@ -5,8 +5,8 @@ Practical project: 1
 
 Simulator - main program
 */
-
 //----------------------------------------------------------Declarations: Diego A. 24/03
+#define _CRT_SECURE_NO_WARNINGS // I use clang for compiling and it won't shut up about deprecated functions.
 #include <stdio.h>
 #include <stdlib.h>
 
@@ -46,61 +46,60 @@ int main (int argc, char ** argv)
 	CheckArguments(argc, argv);
 
 	// initialize EventNumbers
-
 	SimulationLoop(EventNumbers);
+
 	return 0;
 }
 
 // This is the main loop of the program.
 // It generates and consumes events.
-void SimulationLoop(int EventNumbers)
-{
+void SimulationLoop(int EventNumbers){
 	// declare and initialize necessary variables
 	enum EventType event;
 
 	InitStacks();
 
-	for (int i=0; i<EventNumbers; i++)
-	{
+	for (int i=0; i<EventNumbers; i++){
 		event = GenerateEventType();
 
 		switch(event) {
 			case 0:
-				struct RobotPackage* r_package = GenerateRobotPackage();
-				SimulateManagingRobotPackages(r_package);
+				struct Package* package = GeneratePackage();
+				SimulateClassifyPackage(package);
 				break;
 			case 1:
-				struct RobotPackage* package = GenerateRobotPackage();
-				SimulateManagingRobotPackages(package);
+				struct RobotPackage* r_package = GenerateRobotPackage();
+				SimulateManagingRobotPackages(r_package);
 				break;
 			case 2:
 				struct Shopping* shopping = GenerateShopping();
 				SimulateGoForShopping(shopping);
 				break;
 		}
-		// depending on the generated event type:
-		// event type 0:
-			// Simulate managing RobotPackages (sorting)
-		// event type 1:
-			// Simulate classifying Packages (putting to a corresponding stack)
-		// event type 2:
-			// Simulate go for shopping
-		// UpdateShopping
+		UpdateShoppingQueue();
 	}
-	// CLEANING THE SIMULATION
+	RemoveAllRobotPackages();
+	CleanPackageStacks();
+	CleanShoppingQueue();
 }
 
 
 //----------------------------------------------------------General
 // WARNING: do not change this function
-enum EventType GenerateEventType()
-{
+enum EventType GenerateEventType(){
 	return rand()%3;
 }
 
-void CheckArguments (int argc, char ** argv)
-{
-	// check the input introduced by the user
+void CheckArguments (int argc, char ** argv){
+    if(argc != 2){
+        fprintf(stderr, "This progrma requires and parses only 1 argument. Number of arguments you passed: %d", argc-1);
+        exit(EXIT_FAILURE);
+    }
+    if(atoi(argv[1]) < 1){
+        fprintf(stderr, "The argument must be a positive integer. You passed: %s", argv[1]);
+        exit(EXIT_FAILURE);
+    }
+    printf("Starting simulation with %s events....\n", argv[1]);
 }
 
 //----------------------------------------------------------Logic
